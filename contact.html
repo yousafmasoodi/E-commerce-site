@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us - Yousaf Shop</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen flex flex-col">
+    <!--  Navbar Header -->
+    <header class="sticky top-0 z-50 bg-gray-900 text-gray-100 shadow">
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <!-- Logo -->
+        <h1 class="text-2xl font-extrabold">Yousaf-Shop</h1>
+
+        <!--  Navigation Links -->
+        <nav>
+          <ul class="flex gap-4 text-sm sm:text-base">
+            <li>
+              <a href="index.html" class="hover:text-yellow-400 transition"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="contact.html" class="text-yellow-400 font-semibold"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a href="cart.html" class="hover:text-yellow-400 transition">
+                🛒 Cart (<span id="cart-count">0</span>)
+              </a>
+            </li>
+            <li>
+              <a href="checkout.html" class="hover:text-yellow-400 transition"
+                >Checkout</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!--  Contact Form Section -->
+    <main class="flex-grow flex items-center justify-center px-4 py-12">
+      <div class="bg-white shadow-md rounded-lg max-w-md w-full p-8">
+        <h2 class="text-3xl font-bold mb-6 text-center">Contact Us</h2>
+
+        <!--  Contact Form -->
+        <form id="contactForm" class="space-y-6" novalidate>
+          <!-- Name Input -->
+          <div>
+            <label for="name" class="block mb-1 font-medium">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              minlength="2"
+              class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              placeholder="Your full name"
+            />
+            <p class="text-red-500 text-sm mt-1 hidden" id="nameError">
+              Please enter at least 2 characters.
+            </p>
+          </div>
+
+          <!-- Email Input -->
+          <div>
+            <label for="email" class="block mb-1 font-medium"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              placeholder="your.email@example.com"
+            />
+            <p class="text-red-500 text-sm mt-1 hidden" id="emailError">
+              Please enter a valid email.
+            </p>
+          </div>
+
+          <!-- Message Textarea -->
+          <div>
+            <label for="message" class="block mb-1 font-medium">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              minlength="10"
+              rows="4"
+              class="w-full border border-gray-300 rounded px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              placeholder="Your message here..."
+            ></textarea>
+            <p class="text-red-500 text-sm mt-1 hidden" id="messageError">
+              Message must be at least 10 characters.
+            </p>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full bg-yellow-400 text-gray-900 font-semibold py-2 rounded hover:bg-yellow-500 transition"
+          >
+            Send Message
+          </button>
+        </form>
+
+        <!--  Success Message -->
+        <p
+          id="successMessage"
+          class="mt-4 text-green-600 font-semibold text-center hidden"
+        >
+          Thank you for contacting us! We'll get back to you soon.
+        </p>
+      </div>
+    </main>
+
+    <!--  Footer -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-4">
+      &copy; 2025 Yousaf Shop. All rights reserved.
+    </footer>
+
+    <!--  JavaScript for Form Validation and Cart Count -->
+    <script>
+      //  Form Inputs
+      const contactForm = document.getElementById("contactForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const messageInput = document.getElementById("message");
+
+      //  Error Messages
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const messageError = document.getElementById("messageError");
+
+      //  Success Message
+      const successMessage = document.getElementById("successMessage");
+
+      //  Form Submission Logic
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // prevent page reload
+
+        let valid = true;
+
+        // Reset all messages
+        nameError.classList.add("hidden");
+        emailError.classList.add("hidden");
+        messageError.classList.add("hidden");
+        successMessage.classList.add("hidden");
+
+        //  Name Validation
+        if (nameInput.value.trim().length < 2) {
+          nameError.classList.remove("hidden");
+          valid = false;
+        }
+
+        //  Email Validation (basic regex)
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value.trim())) {
+          emailError.classList.remove("hidden");
+          valid = false;
+        }
+
+        //  Message Validation
+        if (messageInput.value.trim().length < 10) {
+          messageError.classList.remove("hidden");
+          valid = false;
+        }
+
+        if (!valid) return;
+
+        //  Show confirmation if all inputs are valid
+        successMessage.classList.remove("hidden");
+        contactForm.reset();
+      });
+
+      //  Update Cart Count (optional for cart feature)
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById("cart-count").textContent = count;
+      }
+      updateCartCount(); // run on page load
+    </script>
+  </body>
+</html>

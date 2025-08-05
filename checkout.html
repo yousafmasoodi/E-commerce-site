@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkout</title>
+
+    <!--  Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--  JavaScript to handle form logic -->
+    <script defer src="checkout.js"></script>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen">
+    <!--  Navbar/Header (Consistent with Home page) -->
+    <nav class="sticky top-0 z-50 bg-gray-900 text-white shadow p-4">
+      <div
+        class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <!--  Website Logo / Title -->
+        <h1 class="text-2xl font-extrabold">Yousaf-Shop</h1>
+
+        <!--  Navigation Links -->
+        <ul class="flex gap-4 text-sm sm:text-base">
+          <li>
+            <a href="./index.html" class="hover:text-yellow-400 transition"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="./contact.html" class="hover:text-yellow-400 transition"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a href="cart.html" class="hover:text-yellow-400 transition">
+              🛒 Cart (<span id="cart-count">0</span>)
+            </a>
+          </li>
+          <li>
+            <a
+              href="checkout.html"
+              class="text-yellow-400 font-semibold transition"
+              >Checkout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--  Checkout Form Container -->
+    <div class="flex justify-center items-center pt-40">
+      <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+        <!--  Form Title -->
+        <h1 class="text-2xl font-bold mb-4 text-center">Checkout</h1>
+
+        <!--  Checkout Form Fields -->
+        <form id="checkoutForm" class="space-y-4">
+          <!--  Full Name Input -->
+          <div>
+            <label class="block font-medium mb-1">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              required
+              class="w-full border px-3 py-2 rounded"
+            />
+          </div>
+
+          <!--  Email Input -->
+          <div>
+            <label class="block font-medium mb-1">Email</label>
+            <input
+              type="email"
+              id="email"
+              required
+              class="w-full border px-3 py-2 rounded"
+            />
+          </div>
+
+          <!--  Address Input -->
+          <div>
+            <label class="block font-medium mb-1">Address</label>
+            <textarea
+              id="address"
+              required
+              class="w-full border px-3 py-2 rounded"
+            ></textarea>
+          </div>
+
+          <!--  Submit Button -->
+          <button
+            type="submit"
+            class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+          >
+            Place Order
+          </button>
+        </form>
+
+        <!--  Confirmation Message (hidden by default) -->
+        <div
+          id="confirmationMessage"
+          class="mt-4 text-green-600 text-center font-semibold hidden"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>

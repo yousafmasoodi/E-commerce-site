@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yousaf Shop</title>
+
+    <!--  Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-white text-gray-900 font-sans min-h-screen flex flex-col">
+    <!--  Navbar / Header -->
+    <header class="sticky top-0 z-50 bg-gray-900 text-gray-100 shadow">
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <!--  Logo / Brand Name -->
+        <h1 class="text-2xl font-extrabold">Yousaf-Shop</h1>
+
+        <!--  Navigation Links -->
+        <nav>
+          <ul class="flex gap-4 text-sm sm:text-base">
+            <li>
+              <a href="./index.html" class="hover:text-yellow-400 transition"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="./contact.html" class="hover:text-yellow-400 transition"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a href="cart.html" class="hover:text-yellow-400 transition"
+                >🛒 Cart (<span id="cart-count">0</span>)</a
+              >
+            </li>
+            <li>
+              <a href="checkout.html" class="hover:text-yellow-400 transition"
+                >Checkout</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!--  Currency Selector Dropdown -->
+        <select
+          id="currencySelector"
+          class="bg-white text-black p-2 rounded border text-sm"
+        >
+          <option value="USD" selected>USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="JPY">Yen (¥)</option>
+          <option value="AFG">AFG (؋)</option>
+        </select>
+      </div>
+    </header>
+
+    <!--  Hero Banner Section -->
+    <section class="hero bg-yellow-400 text-black py-10 text-center">
+      <h2 class="text-4xl font-bold mb-2">Welcome to Yousaf Shop</h2>
+      <p class="text-lg max-w-xl mx-auto">
+        Find the best products at unbeatable prices. Shop now!
+      </p>
+    </section>
+
+    <!--  Product Filter Dropdown -->
+    <div class="max-w-6xl mx-auto px-4">
+      <select
+        id="categoryFilter"
+        class="mt-6 mb-6 w-full sm:w-64 border p-2 rounded text-sm"
+      >
+        <option value="">All Categories</option>
+      </select>
+    </div>
+
+    <!--  Product Cards Section -->
+    <section
+      id="product-list"
+      class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10"
+    >
+      <!-- Product cards injected dynamically with JavaScript -->
+    </section>
+
+    <!--  Product Detail Modal -->
+    <div
+      id="productModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 p-4 flex items-center justify-center"
+    >
+      <div
+        class="white-box bg-white rounded-lg p-6 w-full max-w-md relative max-h-[90vh] overflow-y-auto"
+      >
+        <!--  Close Button -->
+        <button
+          id="closeModal"
+          class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl"
+        >
+          &times;
+        </button>
+
+        <!--  Modal Content -->
+        <img
+          id="modalImage"
+          class="w-full h-48 object-contain mb-4"
+          alt="Product Image"
+        />
+        <h3 id="modalTitle" class="text-xl font-bold mb-2"></h3>
+        <p id="modalDescription" class="text-sm text-gray-600 mb-4"></p>
+        <p id="modalPrice" class="text-green-600 font-bold text-lg"></p>
+      </div>
+    </div>
+
+    <!--  Footer Section -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-4">
+      &copy; 2025 Yousaf Shop. All rights reserved.
+    </footer>
+
+    <!--  Main JavaScript File -->
+    <script src="./script.js"></script>
+  </body>
+</html>
