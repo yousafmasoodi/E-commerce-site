@@ -15,7 +15,7 @@ const currencySymbols = {
   EUR: "€",
   GBP: "£",
   JPY: "¥",
-  AFG: "؋",
+  AFN: "؋",
 };
 
 //  Fetch Products and Exchange Rates
@@ -155,6 +155,7 @@ async function fetchExchangeRates() {
     const res = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
     const data = await res.json();
     exchangeRates = data.rates;
+    console.log(data);
   } catch (error) {
     console.error("Exchange rate error:", error);
   }
