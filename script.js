@@ -134,7 +134,7 @@ function updateCartCount() {
 
 //  Convert All Displayed Prices to Selected Currency
 function convertPrices() {
-  const rate = exchangeRates[currentCurrency];
+  const rate = exchangeRates[currentCurrency] || 1;
   console.log(rate);
   document.querySelectorAll(".product-price").forEach((el) => {
     const usdPrice = parseFloat(el.getAttribute("data-usd"));
